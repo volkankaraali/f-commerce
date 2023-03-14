@@ -8,19 +8,22 @@ import { useSelector } from 'react-redux';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+// palette
+import palette from '../../theme/palette';
+
 export default function CartButton() {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.between("xs", "sm"));
 
-  const { items } = useSelector(state => state.cart);
+  const { cartItems } = useSelector(state => state.cart);
 
   const { pathname } = useLocation();
   const isInPage = pathname === '/cart';
 
   return (
-    <Box component={Link} to='/cart' sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-      <Badge badgeContent={items.length || "0"} color="primary">
+    <Box component={Link} to='/cart' sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center', borderBottom: isInPage && `1px solid ${palette.dark.primary.main}` }}>
+      <Badge badgeContent={cartItems.length || "0"} color="primary">
         {
           isInPage ? <ShoppingCartIcon color='primary' fontSize='large' /> : <ShoppingCartOutlinedIcon color='primary' fontSize='large' />
         }
