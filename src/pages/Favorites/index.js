@@ -1,5 +1,5 @@
 // libraries
-import { Alert, Box, Container, Grid, Typography } from '@mui/material';
+import { Alert, Box, Breadcrumbs, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -19,7 +19,13 @@ export default function Favorites() {
       }}
     >
       <Container>
-        <Typography color='primary' sx={{ fontSize: '1.7rem', textDecoration: 'underline' }}>Favorites</Typography>
+        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 3 }}>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Typography color="text.primary" sx={{ ":hover": { textDecoration: 'underline' } }} >Homepage</Typography>
+          </Link>
+
+          <Typography color="primary" >Favorites</Typography>
+        </Breadcrumbs>
         {
           favorites.length === 0 && <Alert severity="info">
             There aren't favorite products.

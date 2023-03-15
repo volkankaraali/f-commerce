@@ -1,6 +1,6 @@
 // libraries
 import React, { useEffect, useState } from 'react';
-import { Alert, Box, Button, Card as MUICard, CardContent, CardHeader, Grid, Typography } from '@mui/material';
+import { Alert, Box, Breadcrumbs, Button, Card as MUICard, CardContent, CardHeader, Grid, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { useSelector } from "react-redux";
 import numeral from 'numeral';
@@ -38,7 +38,13 @@ export default function Cart() {
       }}
     >
       <Container>
-        <Typography color='primary' sx={{ fontSize: '1.7rem', textDecoration: 'underline' }}>Shopping Cart</Typography>
+        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 3 }}>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Typography color="text.primary" sx={{ ":hover": { textDecoration: 'underline' } }} >Homepage</Typography>
+          </Link>
+
+          <Typography color="primary" >Shopping Cart</Typography>
+        </Breadcrumbs>
 
         <Grid container spacing={2}>
 

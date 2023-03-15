@@ -1,9 +1,9 @@
 // libraries
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Card, CardContent, CardMedia, Skeleton, TextField, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Button, Card, CardContent, CardMedia, Skeleton, TextField, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import numeral from 'numeral';
 
 // queries
@@ -17,6 +17,7 @@ import { addFavorite, deleteFavorite } from '../../redux/slices/favoritesSlice';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import palette from '../../theme/palette';
 
 
 export default function ProductDetail() {
@@ -76,6 +77,13 @@ export default function ProductDetail() {
       }}
     >
       <Container>
+        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 3 }}>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Typography color="text.primary" sx={{ ":hover": { textDecoration: 'underline' } }} >Homepage</Typography>
+          </Link>
+
+          <Typography color="text.primary">Detail</Typography>
+        </Breadcrumbs>
         {
           isLoading
             ? <Skeleton variant="rounded" height={400} />
