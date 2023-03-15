@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button, Card as MUICard, CardActionArea, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+import numeral from 'numeral';
 
 // icons
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 // redux
 import { addFavorite, deleteFavorite } from '../../redux/slices/favoritesSlice';
-import { addCart, deleteCart } from '../../redux/slices/cartSlice';
+import { addCart } from '../../redux/slices/cartSlice';
 
 export default function Card({ item }) {
 
@@ -21,7 +21,6 @@ export default function Card({ item }) {
   const [isAddedCart, setIsAddedCart] = useState(false);
 
   const { favorites } = useSelector(state => state.favorites)
-  const { cartItems } = useSelector(state => state.cart)
 
   useEffect(() => {
     const isInFavorites = favorites.find(i => i.id === item.id)
@@ -40,7 +39,7 @@ export default function Card({ item }) {
     dispatch(addCart(item))
     setTimeout(() => {
       setIsAddedCart(false)
-    }, 2000);
+    }, 1000);
   }
 
   return (
@@ -80,7 +79,7 @@ export default function Card({ item }) {
           <Typography color="primary" sx={{ fontWeight: 'bold' }}>{item.title}</Typography>
           <Typography noWrap sx={{ fontSize: 'small' }}>{item.description}</Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography sx={{ fontWeight: 'bold' }}>{item.price} $</Typography>
+            <Typography sx={{ fontWeight: 'bold' }}>{numeral(item.price).format('0,0[.]00 $')}</Typography>
             {
               isAddedCart
                 ? <Button variant='contained' sx={{ height: 40 }}>Added to Cart</Button>

@@ -1,8 +1,79 @@
 // libraries
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Box, Breadcrumbs, Button, Card as MUICard, CardContent, CardHeader, Grid, Typography } from '@mui/material';
+import { Container } from '@mui/system';
+import { useSelector } from "react-redux";
+import numeral from 'numeral';
+
+// components
+import CardInCart from '../../components/CardInCart';
+import { Link } from 'react-router-dom';
+import palette from '../../theme/palette';
 
 export default function Cart() {
+
+  const { cartItems } = useSelector(state => state.cart);
+
+  const [subTotalItems, setSubTotalItems] = useState(0)
+  const [subTotalPrice, setSubTotalPrice] = useState(0)
+
+  useEffect(() => handleSubTotals(), [cartItems])
+
+  const handleSubTotals = () => {
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    cartItems.map(i => {
+      totalItems += i.count;
+      totalPrice += i.item.price * i.count
+    })
+    setSubTotalItems(totalItems)
+    setSubTotalPrice(totalPrice)
+  }
+
   return (
-    <div>Cart</div>
+    <Box
+      sx={{
+        pt: 3
+      }}
+    >
+      <Container>
+        <Typography color='primary' sx={{ fontSize: '1.7rem', textDecoration: 'underline' }}>Shopping Cart</Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={8} >
+            <Grid container spacing={1}>
+              {
+                cartItems?.map(({ item, count }) => (
+                  <Grid key={item.id} item xs={12} md={12}>
+                    <CardInCart item={item} count={count} />
+                  </Grid>
+                ))
+              }
+            </Grid>
+          </Grid>
+          <Grid item xs={12} md={4} >
+            <MUICard sx={{ position: 'sticky', top: 0 }}>
+              <CardHeader
+                titleTypographyProps={{
+                  fontSize: '1rem',
+                  fontWeight: 'bold'
+                }}
+                title="Order Summary"
+              />
+              <CardContent>
+                <Box >
+                  <Typography component={"span"}>Subtotal ({`${subTotalItems} item${subTotalItems > 1 ? 's' : ''}`}): </Typography>
+                  <Typography component={"span"} sx={{ fontWeight: 'bold' }}>{numeral(subTotalPrice).format('0,0[.]00 $')}</Typography>
+                </Box>
+                <Box sx={{ mt: 2 }}>
+                  <Button size='small' variant='contained'>Proceed to checkout</Button>
+                </Box>
+              </CardContent>
+            </MUICard>
+          </Grid>
+        </Grid>
+
+      </Container >
+    </Box >
   )
 }

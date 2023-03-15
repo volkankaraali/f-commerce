@@ -22,7 +22,7 @@ export default function FavoritesButton() {
   const isInPage = pathname === '/favorites';
 
   return (
-    <Box component={Link} to='/favorites' sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center', borderBottom: isInPage && `1px solid ${palette.dark.primary.main}` }}>
+    <Box component={Link} to='/favorites' sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center', borderBottom: isInPage && `2px solid ${palette.dark.primary.main}` }}>
       <Badge badgeContent={favorites.length || "0"} color="primary">
         {isInPage ? <FavoriteIcon fontSize='large' color="primary" /> : <FavoriteBorderIcon fontSize='large' color="primary" />}
       </Badge>

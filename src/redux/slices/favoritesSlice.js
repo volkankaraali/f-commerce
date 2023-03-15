@@ -10,7 +10,8 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFavorite: (state, action) => {
-      state.favorites = [...state.favorites, action.payload];
+      const existInFavorites = state.favorites.find(item => item.id === action.payload.id)
+      if (!existInFavorites) state.favorites = [...state.favorites, action.payload];
     },
     deleteFavorite: (state, action) => {
       const removed = state.favorites.filter(item => item.id !== action.payload)

@@ -9,8 +9,6 @@ import SettingsProvider from './context/SettingsContext';
 // theme
 import ThemeProvider from './theme';
 
-// redux
-
 function App() {
 
   return (
