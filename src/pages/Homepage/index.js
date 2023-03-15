@@ -38,7 +38,7 @@ export default function Homepage() {
         </Grid>
 
         <Box
-          sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}
+          sx={{ display: 'flex', justifyContent: 'center', mt: 2, mb: 3 }}
         >
           <Pagination color='primary' size={isMobile ? 'small' : 'medium'} count={Math.ceil(data?.total / limit) || 10} page={page + 1} onChange={handleCurrentPage} />
         </Box>
