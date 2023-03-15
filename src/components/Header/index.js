@@ -47,6 +47,7 @@ export default function Header() {
                 width: '100%',
                 height: '100%'
               }}
+              loading="lazy"
               src='/assets/images/logo.png'
               alt='f-commerce'
             />
@@ -106,6 +107,7 @@ export default function Header() {
               height: '100%'
             }}
             src='/assets/images/logo.png'
+            loading='lazy'
             alt='f-commerce'
           />
 

@@ -4,19 +4,20 @@ import { Box, Button, Card, CardContent, CardMedia, Skeleton, TextField, Typogra
 import { Container } from '@mui/system';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import numeral from 'numeral';
 
 // queries
 import { useGetProduct } from '../../Queries/Products';
 
 // redux
 import { decreaseCount, increaseCount, deleteAllItemInCart, addCart } from '../../redux/slices/cartSlice';
-import numeral from 'numeral';
+import { addFavorite, deleteFavorite } from '../../redux/slices/favoritesSlice';
 
 // icons
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { addFavorite, deleteFavorite } from '../../redux/slices/favoritesSlice';
+
 
 export default function ProductDetail() {
   const dispatch = useDispatch();

@@ -19,6 +19,7 @@ export default function NoFound() {
           sx={{
             width: 500
           }}
+          loading="lazy"
           src="assets/images/404page.png"
         />
         <Typography color="primary" component={Link} to="/">Comeback to Homepage</Typography>

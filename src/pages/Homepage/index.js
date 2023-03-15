@@ -1,6 +1,8 @@
 // libraries
 import React, { useState } from 'react';
 import { Box, Container, Grid, Pagination, useMediaQuery, useTheme } from '@mui/material';
+
+// queries
 import { useProducts } from '../../Queries/Products';
 
 // components
