@@ -81,8 +81,7 @@ export default function ProductDetail() {
           <Link to="/" style={{ textDecoration: 'none' }}>
             <Typography color="text.primary" sx={{ ":hover": { textDecoration: 'underline' } }} >Homepage</Typography>
           </Link>
-
-          <Typography color="text.primary">Detail</Typography>
+          <Typography color="primary" >Detail</Typography>
         </Breadcrumbs>
         {
           isLoading
