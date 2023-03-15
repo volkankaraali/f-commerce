@@ -24,7 +24,7 @@ export default function Homepage() {
       <Container>
         <Grid container spacing={2}>
           {
-            isLoading && <PlaceholderCard />
+            !isLoading && <PlaceholderCard />
           }
           {
             data?.products?.map(item => (
