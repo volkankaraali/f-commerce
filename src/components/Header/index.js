@@ -37,12 +37,14 @@ export default function Header() {
             component={Link}
             to='/'
             sx={{
+              width: 60,
               height: '100%'
             }}
           >
             <Box
               component="img"
               sx={{
+                width: '100%',
                 height: '100%'
               }}
               src='/assets/images/logo.png'
