@@ -1,6 +1,6 @@
 // libraries
 import React, { useEffect, useState } from 'react';
-import { Box, Breadcrumbs, Button, Card as MUICard, CardContent, CardHeader, Grid, Typography } from '@mui/material';
+import { Alert, Box, Breadcrumbs, Button, Card as MUICard, CardContent, CardHeader, Grid, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { useSelector } from "react-redux";
 import numeral from 'numeral';
@@ -39,8 +39,26 @@ export default function Cart() {
     >
       <Container>
         <Typography color='primary' sx={{ fontSize: '1.7rem', textDecoration: 'underline' }}>Shopping Cart</Typography>
+
         <Grid container spacing={2}>
+
           <Grid item xs={12} md={8} >
+            {
+              cartItems.length === 0 && <Alert severity="info">
+                There aren't product in your cart.
+                <Typography
+                  to='/'
+                  component={Link}
+                  sx={{
+                    color: palette.dark.primary.light,
+                    fontSize: 'small',
+                    textDecoration: 'none',
+                    ":hover": {
+                      textDecoration: 'underline'
+                    }
+                  }}>Click here to find product!</Typography>
+              </Alert>
+            }
             <Grid container spacing={1}>
               {
                 cartItems?.map(({ item, count }) => (

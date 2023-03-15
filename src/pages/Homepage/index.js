@@ -9,7 +9,6 @@ import PlaceholderCard from '../../components/PlaceholderCard';
 
 export default function Homepage() {
 
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.between("xs", "sm"));
 

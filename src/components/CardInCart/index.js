@@ -89,7 +89,6 @@ export default function CardInCart({ item, count }) {
                 <DeleteIcon />
               </IconButton>
             </Box>
-
           </Box>
           <Box
             sx={{

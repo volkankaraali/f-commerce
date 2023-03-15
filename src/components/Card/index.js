@@ -9,6 +9,7 @@ import numeral from 'numeral';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
 // redux
 import { addFavorite, deleteFavorite } from '../../redux/slices/favoritesSlice';
 import { addCart } from '../../redux/slices/cartSlice';
@@ -49,7 +50,7 @@ export default function Card({ item }) {
         position: 'relative',
       }}
     >
-      <CardActionArea component={Link} to='/detail/1'>
+      <CardActionArea component={Link} to={`/detail/${item.id}`}>
         <IconButton
           sx={{
             position: 'absolute',
