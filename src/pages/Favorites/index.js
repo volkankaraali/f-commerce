@@ -19,7 +19,7 @@ export default function Favorites() {
       }}
     >
       <Container>
-        <Typography color='primary' sx={{ fontSize: '1.5rem', textDecoration: 'underline' }}>Favorites</Typography>
+        <Typography color='primary' sx={{ fontSize: '1.7rem', textDecoration: 'underline' }}>Favorites</Typography>
         {
           favorites.length === 0 && <Alert severity="info">
             There aren't favorite products.
