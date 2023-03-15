@@ -32,7 +32,7 @@ export default function Header() {
   if (isMobile) {
     return (
       <AppBar position='static' sx={{ backgroundImage: 'none', backgroundColor: themeMode === 'dark' ? palette.dark.grey[900] : palette.light.background.default, boxShadow: `1px 6px 7px -10px ${palette.dark.primary.main}` }}>
-        <Toolbar sx={{ height: 50, display: 'flex', justifyContent: 'space-between' }}>
+        <Toolbar sx={{ height: 70, display: 'flex', justifyContent: 'space-between' }}>
           <Box
             component={Link}
             to='/'
