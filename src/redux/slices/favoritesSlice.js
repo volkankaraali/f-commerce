@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  favorites: [],
+  favorites: JSON.parse(localStorage.getItem('f-favorites')) || [],
 
 }
 
@@ -11,11 +11,15 @@ export const favoritesSlice = createSlice({
   reducers: {
     addFavorite: (state, action) => {
       const existInFavorites = state.favorites.find(item => item.id === action.payload.id)
-      if (!existInFavorites) state.favorites = [...state.favorites, action.payload];
+      if (!existInFavorites) {
+        state.favorites.push(action.payload)
+        localStorage.setItem('f-favorites', JSON.stringify(state.favorites))
+      };
     },
     deleteFavorite: (state, action) => {
       const removed = state.favorites.filter(item => item.id !== action.payload)
       state.favorites = removed;
+      localStorage.setItem('f-favorites', JSON.stringify(removed))
     }
   }
 })

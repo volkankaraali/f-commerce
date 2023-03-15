@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cartItems: [],
+  cartItems: JSON.parse(localStorage.getItem('f-cart')) || [],
 
 }
 
@@ -14,6 +14,7 @@ export const cartSlice = createSlice({
 
       if (!isInCart) {
         state.cartItems.push({ item: { ...action.payload }, count: 1 })
+        localStorage.setItem('f-cart', JSON.stringify(state.cartItems));
       }
       else {
         const newArr = state.cartItems.map((i) => {
@@ -24,12 +25,15 @@ export const cartSlice = createSlice({
           else return i
         })
         state.cartItems = newArr;
+        localStorage.setItem('f-cart', JSON.stringify(newArr));
       }
 
     },
     deleteCart: (state, action) => {
       const removed = state.cartItems.filter(item => item.id !== action.payload)
       state.cartItems = removed;
+      localStorage.setItem('f-cart', JSON.stringify(removed));
+
     },
     increaseCount: (state, action) => {
       const { id } = action.payload;
@@ -41,6 +45,7 @@ export const cartSlice = createSlice({
         else return i
       })
       state.cartItems = increaseCount;
+      localStorage.setItem('f-cart', JSON.stringify(increaseCount));
     },
     decreaseCount: (state, action) => {
       const { id } = action.payload;
@@ -52,11 +57,13 @@ export const cartSlice = createSlice({
         else return i
       })
       state.cartItems = decreaseCount;
+      localStorage.setItem('f-cart', JSON.stringify(decreaseCount));
     },
     deleteAllItemInCart: (state, action) => {
       const { id } = action.payload;
       const removed = state.cartItems.filter(i => i.item.id !== id);
       state.cartItems = removed;
+      localStorage.setItem('f-cart', JSON.stringify(removed));
     },
   }
 })
