@@ -1,6 +1,6 @@
 // libraries
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Card, CardContent, CardMedia, IconButton, Skeleton, TextField, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, Skeleton, TextField, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
