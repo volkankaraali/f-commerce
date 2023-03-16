@@ -14,13 +14,13 @@ import { store } from './redux/store';
 // tanstack query
 const queryClient = new QueryClient()
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.hydrate(
   <QueryClientProvider client={queryClient}>
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
-  </QueryClientProvider>
+  </QueryClientProvider>,
+  document.getElementById("root")
 );
