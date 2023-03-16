@@ -43,6 +43,6 @@ app.use("^/$", (req, res) => {
 
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
-app.listen(PORT, () => {
-  console.log(`App is launched on ${PORT}`);
+app.listen(process.env.PORT || 8000, () => {
+  console.log(`App is launched on ${process.env.PORT || 8000}`);
 });
