@@ -38,9 +38,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
-    new CopyWebpackPlugin([
-      { from: './public/assets', to: 'assets' }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "source", to: "dest" },
+        { from: "other", to: "public" },
+      ],
+    }),
   ],
   resolve: {
     extensions: ["*", ".js", ".jsx"],
