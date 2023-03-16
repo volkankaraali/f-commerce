@@ -22,8 +22,8 @@ export default function CartButton() {
   const isInPage = pathname === '/cart';
 
   return (
-    <Box component={Link} to='/cart' sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center', borderBottom: isInPage && `2px solid ${palette.dark.primary.main}` }}>
-      <Badge badgeContent={cartItems.length || "0"} color="primary">
+    <Box component={Link} to='/cart' data-testid="carticon" sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center', borderBottom: isInPage && `2px solid ${palette.dark.primary.main}` }}>
+      <Badge data-testid="carticonbadge" badgeContent={cartItems.length || "0"} color="primary" >
         {
           isInPage ? <ShoppingCartIcon color='primary' fontSize='large' /> : <ShoppingCartOutlinedIcon color='primary' fontSize='large' />
         }

@@ -87,6 +87,7 @@ export default function Card({ item }) {
                 : <IconButton
                   sx={{ borderRadius: 2, height: 40 }}
                   onClick={handleCart}
+                  data-testid={`addCartButton${item.id}`}
                 >
                   <AddShoppingCartIcon color='primary' />
                   <Typography color='primary'>Add to Cart</Typography>
