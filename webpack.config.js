@@ -1,13 +1,20 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const nodeExternals = require('webpack-node-externals');
+
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ['@babel/polyfill', './server/server.js'],
   output: {
     path: path.resolve(__dirname, "build"),
+    publicPath: '/',
+    library: 'app',
     filename: "build.js"
   },
+  externals: [nodeExternals()],
+  externalsPresets: { node: true },
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -33,6 +40,7 @@ module.exports = {
       directory: path.join(__dirname, "build"),
     },
     port: 3000,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
