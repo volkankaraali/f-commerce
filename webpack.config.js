@@ -40,8 +40,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: "source", to: "dest" },
-        { from: "other", to: "public" },
+        { from: "public" },
       ],
     }),
   ],
