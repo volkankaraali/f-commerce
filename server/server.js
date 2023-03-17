@@ -15,7 +15,7 @@ const queryClient = new QueryClient()
 
 const app = express();
 
-
+const PORT = process.env.PORT || 8000;
 
 app.use("^/$", (req, res) => {
   fs.readFile(path.resolve("./build/index.html"), "utf-8", (err, data) => {
@@ -42,6 +42,6 @@ app.use("^/$", (req, res) => {
 
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
-app.listen(process.env.PORT || 8000, () => {
+app.listen(PORT || 8000, () => {
   console.log(`App is launched on ${PORT}`);
 });
